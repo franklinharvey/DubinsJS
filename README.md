@@ -37,25 +37,29 @@ Short answer, __don't do this__. I do it, but you shouldn't. If you *realllly* w
 const newPoints: [number, number][] = []
 const turning_radius = 0.00001 // ~ a meter
 const step_size = 0.000003 // ~ .3 of a meter
-const start = firstSegment[firstSegment.length - 1] // last point of first segment, assuming array of latLng's
-const startHeading = google.maps.geometry.spherical.computeHeading(
-  firstSegment[firstSegment.length - 2], firstSegment[firstSegment.length - 1] // compute heading between second to last and last point
-) * (Math.PI / 180) // then convert to radians
-const end = lastSegment[lastSegment.length - 1] // last point of first segment, assuming array of latLng's
-const endHeading = google.maps.geometry.spherical.computeHeading(
-  endHeading[endHeading.length - 2], endHeading[endHeading.length - 1] // compute heading between second to last and last point
-) * (Math.PI / 180) // then convert to radians
+
+// last point of first segment, assuming array of latLng's
+const start = firstSegment[firstSegment.length - 1]
+
+// compute heading between second to last and last point
+const startHeading = google.maps.geometry.spherical.computeHeading(firstSegment[firstSegment.length - 2], firstSegment[firstSegment.length - 1])
+
+// last point of first segment, assuming array of latLng's
+const end = lastSegment[lastSegment.length - 1]
+// compute heading between second to last and last point
+const endHeading = google.maps.geometry.spherical.computeHeading(endHeading[endHeading.length - 2], endHeading[endHeading.length - 1])
+
 const dubWorker = new Dubins()
 dubWorker.shortestAndSample([
     // start x, y, and heading
     start.lat(),
     start.lng(),
-    startHeading
+    startHeading * (Math.PI / 180) // then convert to radians
   ], [
     // end x, y, and heading
     end.lat(),
     end.lng(),
-    endHeading
+    endHeading * (Math.PI / 180) // then convert to radians
   ], turning_radius, step_size, (q, _) => {
     // callback
     newPoints.push([q[0], q[1]])
