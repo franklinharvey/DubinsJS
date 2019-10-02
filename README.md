@@ -31,7 +31,7 @@ dubWorker.shortestAndSample([
 ```
 
 #### What if I want to use Lat/Long instead of X/Y?
-Short answer, don't do this. I do it, but you shouldn't. If you *realllly* want to then you can do this:
+Short answer, __don't do this__. I do it, but you shouldn't. If you *realllly* want to then you can do this:
 ```
 // all units in degrees
 const newPoints: [number, number][] = []
