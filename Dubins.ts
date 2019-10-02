@@ -89,11 +89,6 @@ class Dubins {
 		}
 	}
 	public shortestAndSample(start: config, end: config, turning_radius: number, step_size: number, callback: (q: [number, number, number], x: number) => ERROR_CODE) {
-		// let q0: config = [0, 0, 0]
-		// let q1: config = [4, 4, 3.142]
-		// let turning_radius = 1.0
-		// let step_size = 0.1
-
 		const ret = this.dubins_shortest_path(start, end, turning_radius)
 		return this.dubins_path_sample_many(ret[1], step_size, callback)
 	}
