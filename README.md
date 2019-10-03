@@ -44,10 +44,10 @@ const start = firstSegment[firstSegment.length - 1]
 // compute heading between second to last and last point
 const startHeading = google.maps.geometry.spherical.computeHeading(firstSegment[firstSegment.length - 2], firstSegment[firstSegment.length - 1])
 
-// last point of first segment, assuming array of latLng's
-const end = lastSegment[lastSegment.length - 1]
-// compute heading between second to last and last point
-const endHeading = google.maps.geometry.spherical.computeHeading(endHeading[endHeading.length - 2], endHeading[endHeading.length - 1])
+// first point of last segment, assuming array of latLng's
+const end = lastSegment[0]
+// compute heading between first and second point
+const endHeading = google.maps.geometry.spherical.computeHeading(endHeading[0], endHeading[1])
 
 const dubWorker = new Dubins()
 dubWorker.shortestAndSample([
