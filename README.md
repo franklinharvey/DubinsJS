@@ -35,8 +35,8 @@ Short answer, __don't do this__. I do it, but you shouldn't. If you *realllly* w
 ```
 // all units in degrees
 const newPoints: [number, number][] = []
-const turning_radius = 0.00001 // ~ a meter
-const step_size = 0.000003 // ~ .3 of a meter
+const turning_radius = 0.00001 // ~ 1 meter
+const step_size = 0.000003 // ~ .3 meters
 
 // last point of first segment, assuming array of latLng's
 const start = firstSegment[firstSegment.length - 1]
